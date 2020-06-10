@@ -80,10 +80,18 @@ let kat = new Person("Kat", 40);
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-
+function Car(model, milesPerGallon, tank, odometer) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0; 
 }
 
+Car.prototype.fill = function(gallons) {
+  //read when not to use an arrow function
+  let tank = 0;
+  return tank + gallons; 
+}
 /*
   TASK 3
     - Write a Baby constructor subclassing Person.
