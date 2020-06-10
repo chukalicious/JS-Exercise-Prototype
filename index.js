@@ -54,9 +54,13 @@ Person.prototype.poop = function() {
 }
 
 Person.prototype.noMoreThanTenFoods = function() {
-  if(this.stomach.length > 10) {
+  if(this.stomach.length === 11) {
     this.stomach.pop(); 
   }
+}
+
+Person.prototype.toString = function() {
+  return `${this.name}, ${this.age}`
 }
 
 
