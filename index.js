@@ -83,15 +83,17 @@ let kat = new Person("Kat", 40);
 function Car(model, milesPerGallon, tank, odometer) {
   this.model = model;
   this.milesPerGallon = milesPerGallon;
-  this.tank = 0;
+  this.tank = 0; 
   this.odometer = 0; 
 }
 
 Car.prototype.fill = function(gallons) {
   //read when not to use an arrow function
-  let tank = 0;
-  return tank + gallons; 
+  this.tank = this.tank + gallons; 
+  return this.tank; 
 }
+
+
 /*
   TASK 3
     - Write a Baby constructor subclassing Person.
