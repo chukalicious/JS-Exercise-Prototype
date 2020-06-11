@@ -46,18 +46,16 @@ function Person(name, age) {
 }
 
 Person.prototype.eat = function(food) {
-  this.stomach.push(food)
+  this.stomach.push(food);
+  if(this.stomach.length > 10) {
+    this.stomach.pop(); 
+  }
 }
 
 Person.prototype.poop = function() {
   this.stomach = []; 
 }
 
-Person.prototype.noMoreThanTenFoods = function(array) {
-  if(array.length === 11) {
-    array.pop()
-  }
-}
 
 Person.prototype.toString = function() {
   return `${this.name}, ${this.age}`
@@ -93,6 +91,10 @@ Car.prototype.fill = function(gallons) {
   return this.tank; 
 }
 
+/* Car.prototype.drive = function(distance) {
+  this.tank
+}
+ */
 
 /*
   TASK 3
@@ -102,8 +104,8 @@ Car.prototype.fill = function(gallons) {
         + Should return a string "Playing with x", x being the favorite toy.
 */
 function Baby(name, age, favoriteToy) {
-  this.name = name; 
-  this.age = age; 
+  this.name = name;
+  this.age = age;
   this.favoriteToy = favoriteToy; 
 }
 
@@ -111,13 +113,17 @@ Baby.prototype.play = function(favoriteToy) {
   return `Playing with ${this.favoriteToy}`
 }
 
+Baby.call(Person); 
+
+
+
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
+  1. new
+  2. implicit
+  3. explicit
   4. 
 */
 
