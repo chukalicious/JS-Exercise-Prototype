@@ -61,9 +61,6 @@ Person.prototype.toString = function() {
   return `${this.name}, ${this.age}`
 }
 
-
-let kat = new Person("Kat", 40); 
-
 /*
   TASK 2
     - Write a Car constructor that initializes `model` and `milesPerGallon` from arguments.
@@ -104,12 +101,13 @@ Car.prototype.fill = function(gallons) {
         + Should return a string "Playing with x", x being the favorite toy.
 */
 function Baby(name, age, favoriteToy) {
-  this.name = name;
-  this.age = age;
+  Person.call(this, name, age)
   this.favoriteToy = favoriteToy; 
 }
 
-Baby.prototype.play = function(favoriteToy) {
+Baby.prototype = Object.create(Person.prototype);
+
+Baby.prototype.play = function() {
   return `Playing with ${this.favoriteToy}`
 }
 
