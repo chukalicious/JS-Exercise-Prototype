@@ -104,10 +104,10 @@ Car.prototype.drive = function(distance) {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby(name, age, favoriteToy) {
+ function Baby(name, age, favoriteToy) {
   Person.call(this, name, age)
   this.favoriteToy = favoriteToy; 
-}
+} 
 
 Baby.prototype = Object.create(Person.prototype);
 
@@ -123,10 +123,17 @@ Baby.call(Person);
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. new
-  2. implicit
-  3. explicit
-  4. 
+  1. Principle 1: Window/Global Object Binding
+    this refers to itself, of to the object, or context, in which is called. If called on the global object then this will refer to the window object
+
+  3. Principle 3: New binding
+    Again, 'this' referes to the context in which it is called. When an object is passed into the constructor 'this' will then refer to the new object being created
+ 
+    3. explicit
+    Using .call() or apply.() to use the properties of that object on a new one.
+
+  4. implicit
+  Anything can be called to function as a property of the object to which is bound by using 'this' Anything right of this. will be bound to the object
 */
 
 
