@@ -39,8 +39,26 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = []; 
+}
 
+Person.prototype.eat = function(food) {
+  this.stomach.push(food);
+  if(this.stomach.length > 10) {
+    this.stomach.pop(); 
+  }
+}
+
+Person.prototype.poop = function() {
+  this.stomach = []; 
+}
+
+
+Person.prototype.toString = function() {
+  return `${this.name}, ${this.age}`
 }
 
 /*
@@ -57,9 +75,27 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-
+function Car(model, milesPerGallon) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0; 
+  this.odometer = 0; 
 }
+
+Car.prototype.fill = function(gallons) {
+  //read when not to use an arrow function
+  this.tank = this.tank + gallons; 
+  return this.tank; 
+}
+
+Car.prototype.drive = function(distance) {
+  this.odometer = this.odometer + distance; 
+  this.milesPerGallon = this.tank/distance; 
+  return this.tank - this.milesPerGallon; 
+  
+}
+
+
 
 /*
   TASK 3
@@ -68,18 +104,36 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
+ function Baby(name, age, favoriteToy) {
+  Person.call(this, name, age)
+  this.favoriteToy = favoriteToy; 
+} 
 
+Baby.prototype = Object.create(Person.prototype);
+
+Baby.prototype.play = function() {
+  return `Playing with ${this.favoriteToy}`
 }
+
+Baby.call(Person); 
+
+
 
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. Principle 1: Window/Global Object Binding
+    this refers to itself, of to the object, or context, in which is called. If called on the global object then this will refer to the window object
+
+  3. Principle 3: New binding
+    Again, 'this' referes to the context in which it is called. When an object is passed into the constructor 'this' will then refer to the new object being created
+ 
+    3. explicit
+    Using .call() or apply.() to use the properties of that object on a new one.
+
+  4. implicit
+  Anything can be called to function as a property of the object to which is bound by using 'this' Anything right of this. will be bound to the object
 */
 
 
